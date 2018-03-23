@@ -1,6 +1,12 @@
 // import external dependencies
 import 'jquery';
 
+// import isotope
+import 'isotope-layout/dist/isotope.pkgd.min.js';
+
+// import imagesloaded
+import 'imagesloaded/imagesloaded.pkgd.min.js';
+
 // Import everything from autoload
 import "./autoload/**/*"
 
