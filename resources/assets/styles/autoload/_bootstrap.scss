@@ -1,1 +1,10 @@
+// @import "~bootstrap/scss/variables";
+
+$brand-primary:   #311b92;
+$brand-secondary: #311b92;
+$brand-claro: lighten($brand-secondary, 58%);
+$font-family-headings:    "Fredoka One", Helvetica, Arial, sans-serif;
+$font-family-base:        $font-family-headings;
+// $font-size-base: 0.8rem;
+
 @import "~bootstrap/scss/bootstrap";

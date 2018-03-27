@@ -2,5 +2,12 @@
 @import "~bootstrap/scss/functions";
 
 $theme-colors: (
-  primary: #27ae60
+  primary: #311b92
 );
+
+$primary:   #311b92;
+
+$navbar-dark-color:                lighten($primary, 30%);
+$navbar-dark-hover-color:          lighten($primary, 50%);
+$navbar-dark-active-color:         rgba(white, 1);
+$navbar-dark-disabled-color:       rgba(white, 0.5);
