@@ -63,7 +63,8 @@ export default {
 				}
 
 				var $mainContent = $("#ajax-modal #content");
-				$(".entry-content-asset").addClass('embed-responsive embed-responsive-16by9');
+
+				// $(".entry-content-asset").addClass('embed-responsive embed-responsive-16by9');
 
 				// $('.wp-playlist').each(function() {
 				// 	return new WPPlaylistView({
@@ -71,11 +72,49 @@ export default {
 				// 	});
 				// });
 
-				$('#slick').slick({
-					dots: true,
+				$('iframe').reframe();
+
+				$("#light-slider").lightSlider({
+					item: 1,
+					autoWidth: false,
+					slideMove: 1, // slidemove will be 1 if loop is true
+					slideMargin: 10,
+
+					addClass: '',
+					mode: "slide",
+					cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+					easing: 'linear', //'for jquery animation',////
+
+					speed: 400, //ms'
+					loop: true,
+					slideEndAnimation: true,
+
+					keyPress: true,
+					controls: true,
+					prevHtml: '',
+					nextHtml: '',
+
+					rtl: false,
+					adaptiveHeight: true,
+
+					vertical: false,
+					verticalHeight: 500,
+					vThumbWidth: 100,
+
+					thumbItem: 10,
+					pager: true,
+					gallery: false,
+					galleryMargin: 5,
+					thumbMargin: 5,
+					currentPagerPosition: 'middle',
+
+					enableTouch: true,
+					enableDrag: true,
+					freeMove: true,
+					swipeThreshold: 40,
 				});
 
-				$("#ajax-modal #content").append("<button class='btn btn-primary btn-block cerrar'><span class='glyphicon glyphicon-chevron-up'></span> cerrar</button>");
+				// $("#ajax-modal #content").append("<button class='btn btn-primary btn-block0 cerrar'><i class='fas fa-window-close'></i> cerrar</button>");
 				$mainContent.hide().slideDown("slow");
 			});
 		});

@@ -17,7 +17,7 @@
 		@php $args= array('hide_empty' => true ); $tags = get_terms('category', $args);
 		foreach ($tags as $tag){
 			$tag_slug = $tag->slug;
-			echo "<button role='button' class='btn btn-outline-primary w-100' data-loading-text='{$tag->name}' data-filter='.{$tag->slug}'>{$tag->name}</button>";
+			echo "<button role='button' class='btn btn-primary w-100' data-loading-text='{$tag->name}' data-filter='.{$tag->slug}'>{$tag->name}</button>";
 		}
 		@endphp
 	</div>

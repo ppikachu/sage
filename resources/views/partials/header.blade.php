@@ -21,7 +21,12 @@
 		</a>
 
 		@if (has_nav_menu('primary_navigation'))
-			{!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'navbar-nav ml-auto']) !!}
+			{!! wp_nav_menu([
+				'theme_location' => 'primary_navigation',
+				'menu_class' => 'navbar-nav ml-auto',
+        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+        'walker'            => new WP_Bootstrap_Navwalker()
+				]) !!}
 		@endif
 
 	</div>

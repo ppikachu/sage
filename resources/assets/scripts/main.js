@@ -11,9 +11,27 @@ import 'imagesloaded/imagesloaded.pkgd.min';
 //import 'popper.js/dist/popper.min';
 
 // import slick
-import 'slick-carousel/slick/slick.min';
+//import 'slick-carousel/slick/slick.min';
 
-// import hashchange
+// import fitvids
+//import 'fitvids/dist/fitvids.min';
+
+// import reframe
+import 'reframe.js/dist/jquery.reframe.min';
+
+// import lightslider
+import 'lightslider/dist/js/lightslider';
+
+// base package
+import fontawesome from "@fortawesome/fontawesome";
+import faFacebook from "@fortawesome/fontawesome-free-brands/faFacebook";
+import faEnvelope from "@fortawesome/fontawesome-free-solid/faEnvelope";
+import faTimes from "@fortawesome/fontawesome-free-solid/faTimes";
+
+fontawesome.library.add(faFacebook);
+fontawesome.library.add(faEnvelope);
+fontawesome.library.add(faTimes);
+
 /*
  * jQuery hashchange event - v1.4 - 5/29/2014
  * http://benalman.com/projects/jquery-hashchange-plugin/
@@ -37,20 +55,6 @@ import 'slick-carousel/slick/slick.min';
 // Copyright (c) 2010 "Cowboy" Ben Alman,
 // Dual licensed under the MIT and GPL licenses.
 // http://benalman.com/about/license/
-//
-// About: Examples
-//
-// These working examples, complete with fully commented code, illustrate a few
-// ways in which this plugin can be used.
-//
-// hashchange event - http://benalman.com/code/projects/jquery-hashchange/examples/hashchange/
-// document.domain - http://benalman.com/code/projects/jquery-hashchange/examples/document_domain/
-//
-// About: Support and Testing
-//
-// Information about what version or versions of jQuery this plugin has been
-// tested with, what browsers it has been tested in, and where the unit tests
-// reside (so you can test it yourself).
 //
 // jQuery Versions - 1.2.6, 1.3.2, 1.4.1, 1.4.2, 1.11.1
 // Browsers Tested - Internet Explorer 6-8, Firefox 2-4, Chrome 5-6, Safari 3.2-5,

@@ -1,8 +1,14 @@
 /** Import Bootstrap functions */
 @import "~bootstrap/scss/functions";
 
+// fix para build:production
+$navbar-dark-toggler-icon-bg: none;
+$navbar-light-toggler-icon-bg: none;
+//
+
 $theme-colors: (
-  primary: #311b92
+  // primary: #311b92
+  primary: #5020a7
 );
 
 $primary:   #311b92;
