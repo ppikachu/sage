@@ -52,8 +52,8 @@ export default {
 		jQuery(window).hashchange(function() {
 			var url = window.location.hash.substring(1);
 			//console.log(url);
+			if (url!="") preparar();
 			url = url + " #content";
-			preparar();
 
 			$("#ajax-modal").load(url, function(response, status, xhr) {
 
@@ -63,8 +63,6 @@ export default {
 				}
 
 				var $mainContent = $("#ajax-modal #content");
-
-				// $(".entry-content-asset").addClass('embed-responsive embed-responsive-16by9');
 
 				// $('.wp-playlist').each(function() {
 				// 	return new WPPlaylistView({
@@ -115,12 +113,16 @@ export default {
 				});
 
 				// $("#ajax-modal #content").append("<button class='btn btn-primary btn-block0 cerrar'><i class='fas fa-window-close'></i> cerrar</button>");
-				$mainContent.hide().slideDown("slow");
+				$mainContent.hide().slideDown("slow", function() {
+					$('.main').removeClass('blur');
+					$('#loading').remove();
+				});
 			});
 		});
 
 		var preparar = function() {
-			$("#ajax-modal").append('<div id="loading" class="jumbotron">loading</div>');
+			$('body').append('<div id="loading" class="loading"></div>');
+			$('.main').addClass('blur');
 			$('html, body').animate({
 				scrollTop: 0,
 			}, 400);
@@ -130,11 +132,11 @@ export default {
 		$(document).delegate(".cerrar", "click", function() {
 			$("#pack .active").removeClass('active'); //desmarca la entrada que se esta viendo
 			$("#ajax-modal #content").slideUp("slow", function() {
-				$("#ajax-modal").empty();
 				$('html, body').animate({
 					scrollTop: 0,
 				}, 200, function() {
 					location.hash = "";
+					$("#ajax-modal").empty();
 				});
 			});
 			return false;

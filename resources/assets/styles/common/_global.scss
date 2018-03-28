@@ -222,6 +222,25 @@ $slick-dot-size: 12px;
   }
 }
 
+.loading {
+  position: fixed;
+  top: 40vh;
+  height: 100px;
+  width: 100%;
+  z-index: 10;
+  background-image: url(../images/ajax-loader.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.blur {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
 footer {
   padding-top: $line-height-base*3;
   padding-bottom: $line-height-base*3;
