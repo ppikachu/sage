@@ -38,12 +38,12 @@ export default {
 		});
 
 		$(document).delegate(".ajax a", "click", function() {
+			$("#pack .active").removeClass('active'); //desmarca la entrada que se esta viendo
 			location.hash = this.pathname;
 			var el_hash = location.hash.substring(2, window.location.hash.length - 1);
+			$('article#' + el_hash).addClass('active'); //marca la entrada que se esta viendo
 			//console.log(el_hash);
 			$('[data-toggle="tooltip"]').tooltip('hide');
-			$("#pack .active").removeClass('active'); //desmarca la entrada que se esta viendo
-			$('article#' + el_hash).addClass('active'); //marca la entrada que se esta viendo
 			$(window).trigger('hashchange');
 			return false;
 		});
@@ -52,7 +52,8 @@ export default {
 		jQuery(window).hashchange(function() {
 			var url = window.location.hash.substring(1);
 			//console.log(url);
-			if (url!="") preparar();
+			if (url!="") {
+			preparar();
 			url = url + " #content";
 
 			$("#ajax-modal").load(url, function(response, status, xhr) {
@@ -112,12 +113,14 @@ export default {
 					swipeThreshold: 40,
 				});
 
+				$("#ajax-modal").addClass('on');
 				// $("#ajax-modal #content").append("<button class='btn btn-primary btn-block0 cerrar'><i class='fas fa-window-close'></i> cerrar</button>");
 				$mainContent.hide().slideDown("slow", function() {
-					$('.main').removeClass('blur');
+					// $('.main').removeClass('blur');
 					$('#loading').remove();
 				});
 			});
+		}
 		});
 
 		var preparar = function() {
@@ -130,14 +133,11 @@ export default {
 
 		// cerrar entrada
 		$(document).delegate(".cerrar", "click", function() {
-			$("#pack .active").removeClass('active'); //desmarca la entrada que se esta viendo
 			$("#ajax-modal #content").slideUp("slow", function() {
-				$('html, body').animate({
-					scrollTop: 0,
-				}, 200, function() {
-					location.hash = "";
-					$("#ajax-modal").empty();
-				});
+				location.hash = "";
+				$("#ajax-modal").empty().removeClass('on');
+				$('.main').removeClass('blur');
+				$("#pack .active").removeClass('active'); //desmarca la entrada que se esta viendo
 			});
 			return false;
 		});

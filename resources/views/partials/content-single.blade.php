@@ -1,4 +1,4 @@
-<article class="py-5" id="content">
+<article class="py-4 container" id="content">
 
 	<header>
 		<h2 class="entry-title">{{ get_the_title() }}</h2>
@@ -14,6 +14,6 @@
 	</div>
 
 	<div class="row justify-content-center">
-		<button class='btn btn-primary btn-block0 cerrar'><i class='fas fa-times'></i> cerrar</button>
+		<button class='btn btn-primary btn-block0 cerrar my-5'><i class='fas fa-times'></i> cerrar</button>
 	</div>
 </article>

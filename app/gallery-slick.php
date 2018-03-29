@@ -80,7 +80,7 @@ function roots_gallery_st($attr) {
   foreach ($attachments as $id => $attachment) {
     if ($i == 0) $grid.=" itemx2"; else $grid="item"; //agranda la primer foto
     $attachment_medium = wp_get_attachment_image_src( $id, $size='large' );
-    $output .= '<li><img src="'.$attachment_medium[0].'" class="img-fluid"></li>';
+    $output .= '<li class="d-flex0 justify-content-center0"><img src="'.$attachment_medium[0].'" class="img-fluid"></li>';
     // if (trim($attachment->post_excerpt)) {
     //   $output .= '<div class="caption hidden-xs">' . wptexturize($attachment->post_excerpt) . '</div>';
     // }

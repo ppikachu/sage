@@ -10,9 +10,6 @@
     {!! get_search_form(false) !!}
   @endif
 
-	<div id="ajax-modal"></div>
-	<div id="error"></div>
-
 	<div id="filters1" class="filters btn-group btn-group-toggle d-flex0 my-4 d-none d-md-flex">
 		@php $args= array('hide_empty' => true ); $tags = get_terms('category', $args);
 		foreach ($tags as $tag){
