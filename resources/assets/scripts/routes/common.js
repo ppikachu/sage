@@ -63,15 +63,14 @@ export default {
 					$("#error").html(msg + xhr.status + " " + xhr.statusText);
 				}
 
-				var $mainContent = $("#ajax-modal #content");
+				$("#ajax-modal").addClass('on');
 
+				var $mainContent = $("#ajax-modal #content");
 				// $('.wp-playlist').each(function() {
 				// 	return new WPPlaylistView({
 				// 		el: this,
 				// 	});
 				// });
-
-				$('iframe').reframe();
 
 				$("#light-slider").lightSlider({
 					item: 1,
@@ -113,12 +112,10 @@ export default {
 					swipeThreshold: 40,
 				});
 
-				$("#ajax-modal").addClass('on');
-				// $("#ajax-modal #content").append("<button class='btn btn-primary btn-block0 cerrar'><i class='fas fa-window-close'></i> cerrar</button>");
-				$mainContent.hide().slideDown("slow", function() {
-					// $('.main').removeClass('blur');
-					$('#loading').remove();
-				});
+				$('#loading').remove();
+				$mainContent.hide();
+				$mainContent.slideDown("slow");
+				$('iframe').reframe();
 			});
 		}
 		});
@@ -144,7 +141,7 @@ export default {
 
 		$('.boton-contacto').click(function() {
 			$('#contacto').slideToggle('slow');
-			$(this).toggleClass('cruz');
+			//$(this).toggleClass('cruz');
 			//$( "#contacto-icono" ).toggleClass('fa-envelope-o fa-caret-up');
 			return false;
 		});

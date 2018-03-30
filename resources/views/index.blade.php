@@ -19,7 +19,7 @@
 		@endphp
 	</div>
 
-	<div id="filters2" class="filters btn-group-vertical btn-group-toggle d-flex my-4 d-md-none">
+	<div id="filters2" class="filters btn-group-sm btn-group-vertical btn-group-toggle d-flex my-3 d-md-none">
 		@php $args= array('hide_empty' => true ); $tags = get_terms('category', $args);
 		foreach ($tags as $tag){
 			$tag_slug = $tag->slug;

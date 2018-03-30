@@ -24,22 +24,13 @@ import 'lightslider/dist/js/lightslider';
 
 // base package
 import fontawesome from "@fortawesome/fontawesome";
+// icons
+import faBars from "@fortawesome/fontawesome-free-solid/faBars";
 import faFacebook from "@fortawesome/fontawesome-free-brands/faFacebook";
 import faEnvelope from "@fortawesome/fontawesome-free-solid/faEnvelope";
 import faTimes from "@fortawesome/fontawesome-free-solid/faTimes";
 
-fontawesome.library.add(faFacebook);
-fontawesome.library.add(faEnvelope);
-fontawesome.library.add(faTimes);
-
-/*
- * jQuery hashchange event - v1.4 - 5/29/2014
- * http://benalman.com/projects/jquery-hashchange-plugin/
- *
- * Copyright (c) 2010 "Cowboy" Ben Alman
- * Dual licensed under the MIT and GPL licenses.
- * @license http://benalman.com/about/license/
- */
+fontawesome.library.add(faBars,faFacebook,faEnvelope,faTimes);
 
 // Script: jQuery hashchange event
 //
@@ -48,18 +39,6 @@ fontawesome.library.add(faTimes);
 // Project Home - http://benalman.com/projects/jquery-hashchange-plugin/
 // GitHub       - http://github.com/cowboy/jquery-hashchange/
 // Source       - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.js
-// (Minified)   - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.min.js (0.8kb gzipped)
-//
-// About: License
-//
-// Copyright (c) 2010 "Cowboy" Ben Alman,
-// Dual licensed under the MIT and GPL licenses.
-// http://benalman.com/about/license/
-//
-// jQuery Versions - 1.2.6, 1.3.2, 1.4.1, 1.4.2, 1.11.1
-// Browsers Tested - Internet Explorer 6-8, Firefox 2-4, Chrome 5-6, Safari 3.2-5,
-//                   Opera 9.6-10.60, iPhone 3.1, Android 1.6-2.2, BlackBerry 4.6-5.
-// Unit Tests      - http://benalman.com/code/projects/jquery-hashchange/unit/
 
 (function($,window,undefined){
   '$:nomunge'; // Used by YUI compressor.

@@ -5,7 +5,7 @@
 			$output .= $category->category_nicename.$separator;
 		}
 	echo "class='ajax p-1 ".trim($output, $separator)."'";} @endphp id="<?php echo $post->post_name; ?>" role="article">
-	<a class="d-block" href="{{ get_permalink() }}" data-toggle="tooltip" data-placement="bottom" title="{{ the_title() }}">
+	<a class="d-block rounded" href="{{ get_permalink() }}" data-toggle="tooltip" data-placement="bottom" title="@php echo the_title(); if (has_excerpt()) { echo " - ".get_the_excerpt(); } @endphp">
 		@php(the_post_thumbnail('thumbnail', array('class' => 'rounded img-fluid')))
 	</a>
 </article>

@@ -1,4 +1,4 @@
-<div class="py-5" id="content">
+<div class="py-5 container" id="content">
 	@php(the_content())
 
 	<div class="row justify-content-center">
