@@ -4,16 +4,20 @@
 // fix para build:production
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
-//
 
-$theme-colors: (
-  // primary: #311b92
-  primary: #5020a7
-);
+$primary: #311b92;
+$secondary: #0d006f;
+// $primary: #0d006f;
+// primary: #311b92
+// primary: #5020a7
 
-$primary:   #311b92;
-
-$navbar-dark-color:                lighten($primary, 30%);
-$navbar-dark-hover-color:          lighten($primary, 50%);
+$navbar-dark-toggler-icon-bg: none;
+$navbar-dark-toggler-border-color: rgba(white, 0.5);
+$navbar-dark-active-color: $primary;
+$navbar-dark-color:                rgba(white, 0.7);
+$navbar-dark-hover-color:          rgba(white, 0.9);
 $navbar-dark-active-color:         rgba(white, 1);
 $navbar-dark-disabled-color:       rgba(white, 0.5);
+//
+
+$enable-shadows: true;

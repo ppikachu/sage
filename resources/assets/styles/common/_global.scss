@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400italic,700italic,400,700);
 
 .navbar-dark {
-  background-color: $black !important;
+  background-color: $secondary !important;
 }
 
 /* portfolio */
@@ -26,8 +26,13 @@ $width: 50%;
 
   @include transition(border 0.2s ease-in-out);
 
-  :hover img {
-    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.5) inset;
+  a:hover {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  img {
+    z-index: -1;
+    position: relative;
   }
 }
 
@@ -45,10 +50,6 @@ $width: 50%;
 .tooltip {
   font-size: $font-size-base; //h5
 }
-
-// #loading {
-//
-// }
 
 // /////////
 
@@ -84,81 +85,16 @@ $width: 50%;
   #blu { background-color: blue; }
 }
 
-$navbar-alto: 76px;
-
-.navbar-brand {
-  font-size: 200%;
-  height: $navbar-alto;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.navbar-header::after {
-  display: inline;
-  //borra el borde inferior
-}
-
-#iso {
-  @include media-breakpoint-up(sm) {
-    margin-left: -0.5em;
-  }
-
-  height: 76px;
-  float: left;
-}
-
-#luznegralogo {
-  color: $gray-200;
-  font-size: 110%;
-  margin-top: 0.4em;
-  margin-bottom: 0;
-  float: left;
-}
-
-#descripcion {
-  color: $brand-claro;
-  margin-top: -0.1em;
-  margin-bottom: 0;
-  font-size: 66%;
-}
-
-/* menu */
-#menu-menu {
-  @include media-breakpoint-up(sm) {
-    margin: 0;
-    clear: both;
-    display: flex;
-
-    /* or inline-flex */
-    li {
-      flex-grow: 1;
-      text-align: center;
-    }
-  }
-}
-
 /* filtros y menu */
-.menu-item {
-  font-family: $font-family-headings;
-  text-transform: uppercase;
-
-  @include media-breakpoint-down(sm) {
-    font-size: 0.7em;
-  }
-}
-
-// .filters .active::before {
-//   content: "x";
-//   position: absolute;
-//   left: $mark-padding;
-// }
 
 .filters button {
-  // font-family: $font-family-headings;
   text-transform: uppercase;
 
-  @include media-breakpoint-down(sm) {
-    font-size: 0.9rem;
+  &.active {
+    background-color: lighten($primary, 20%) !important;
+    // @include box-shadow(0 0 7px 0 #5639db);
+    box-shadow: 0 0 7px 0 lighten($primary, 20%) !important;
+    border-color: transparent !important;
   }
 }
 
@@ -166,69 +102,21 @@ $navbar-alto: 76px;
 $margin: 2%;
 $width: 50%;
 
-#pack {
-  margin: $line-height-base -2%;
-
-  @include media-breakpoint-up(sm) {
-    margin: $line-height-base -1%;
-  }
+#ajax-modal {
+  background-color: white;
 }
 
-/* Arrows */
-// Default Variables
-// $slick-font-path: "./fonts/" !default;
-// $slick-font-family: "slick" !default;
-// $slick-loader-path: "./" !default;
-$slick-arrow-color: $brand-primary !default;
-$slick-dot-color: $brand-primary !default;
-// $slick-dot-color-active: $slick-dot-color !default;
-// $slick-prev-character: "←" !default;
-// $slick-next-character: "→" !default;
-// $slick-dot-character: "•" !default;
-$slick-dot-size: 12px;
-// $slick-opacity-default: 0.75 !default;
-// $slick-opacity-on-hover: 1 !default;
-// $slick-opacity-not-active: 0.25 !default;
-
-.slick-prev {
-  left: 15px !important;
-  z-index: 100;
-}
-
-.slick-next {
-  right: 15px !important;
-}
-
-.slick-dots {
-  position: relative !important;
-  bottom: 0 !important;
-}
-
-.cerrar {
-  margin-bottom: $line-height-base;
-}
-
-.cruz::after {
-  color: $brand-claro;
-  // font-family: 'Glyphicons Halflings';
-  content: "\e078";
-  position: absolute;
-  right: -3px;
-  top: 0;
-  padding-top: $line-height-base/2;
-
-  @include media-breakpoint-up(sm) {
-    padding-top: $line-height-base*1.4;
-  }
+#ajax-modal.on {
+  z-index: 10;
 }
 
 .loading {
   position: fixed;
-  top: 40vh;
-  height: 100px;
+  top: 35vh;
+  height: 256px;
   width: 100%;
   z-index: 10;
-  background-image: url(../images/ajax-loader.gif);
+  background-image: url(../images/iso.png);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -241,8 +129,7 @@ $slick-dot-size: 12px;
   filter: blur(5px);
 }
 
-footer {
-  padding-top: $line-height-base*3;
-  padding-bottom: $line-height-base*3;
-  text-align: center;
+.entry-content-asset,
+.lSSlideOuter {
+  margin-bottom: 1em; //margen videos y slider
 }

@@ -1,5 +1,7 @@
-<div id="content">
+<div class="py-5 container" id="content">
 	@php(the_content())
-</div>
 
-{!! wp_link_pages(['echo' => 0, 'before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']) !!}
+	<div class="row justify-content-center">
+		<button class='btn btn-primary btn-block0 cerrar my-5'><i class='fas fa-times'></i> cerrar</button>
+	</div>
+</div>
