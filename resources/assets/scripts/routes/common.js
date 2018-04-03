@@ -52,72 +52,72 @@ export default {
 		jQuery(window).hashchange(function() {
 			var url = window.location.hash.substring(1);
 			//console.log(url);
-			if (url!="") {
-			preparar();
-			url = url + " #content";
+			if (url != "") {
+				preparar();
+				url = url + " #content";
 
-			$("#ajax-modal").load(url, function(response, status, xhr) {
+				$("#ajax-modal").load(url, function(response, status, xhr) {
 
-				if (status == "error") {
-					var msg = "Sorry but there was an error: ";
-					$("#error").html(msg + xhr.status + " " + xhr.statusText);
-				}
+					if (status == "error") {
+						var msg = "Sorry but there was an error: ";
+						$("#error").html(msg + xhr.status + " " + xhr.statusText);
+					}
 
-				$("#ajax-modal").addClass('on');
+					$("#ajax-modal").addClass('on');
 
-				var $mainContent = $("#ajax-modal #content");
-				// $('.wp-playlist').each(function() {
-				// 	return new WPPlaylistView({
-				// 		el: this,
-				// 	});
-				// });
+					var $mainContent = $("#ajax-modal #content");
+					// $('.wp-playlist').each(function() {
+					// 	return new WPPlaylistView({
+					// 		el: this,
+					// 	});
+					// });
 
-				$("#light-slider").lightSlider({
-					item: 1,
-					autoWidth: false,
-					slideMove: 1, // slidemove will be 1 if loop is true
-					slideMargin: 10,
+					$("#light-slider").lightSlider({
+						item: 1,
+						autoWidth: false,
+						slideMove: 1, // slidemove will be 1 if loop is true
+						slideMargin: 10,
 
-					addClass: '',
-					mode: "slide",
-					cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
-					easing: 'linear', //'for jquery animation',////
+						addClass: '',
+						mode: "slide",
+						cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+						easing: 'linear', //'for jquery animation',////
 
-					speed: 400, //ms'
-					loop: true,
-					slideEndAnimation: true,
+						speed: 400, //ms'
+						loop: true,
+						slideEndAnimation: true,
 
-					keyPress: true,
-					controls: true,
-					prevHtml: '',
-					nextHtml: '',
+						keyPress: true,
+						controls: true,
+						prevHtml: '',
+						nextHtml: '',
 
-					rtl: false,
-					adaptiveHeight: true,
+						rtl: false,
+						adaptiveHeight: true,
 
-					vertical: false,
-					verticalHeight: 500,
-					vThumbWidth: 100,
+						vertical: false,
+						verticalHeight: 500,
+						vThumbWidth: 100,
 
-					thumbItem: 10,
-					pager: true,
-					gallery: false,
-					galleryMargin: 5,
-					thumbMargin: 5,
-					currentPagerPosition: 'middle',
+						thumbItem: 10,
+						pager: true,
+						gallery: false,
+						galleryMargin: 5,
+						thumbMargin: 5,
+						currentPagerPosition: 'middle',
 
-					enableTouch: true,
-					enableDrag: true,
-					freeMove: true,
-					swipeThreshold: 40,
+						enableTouch: true,
+						enableDrag: true,
+						freeMove: true,
+						swipeThreshold: 40,
+					});
+
+					$('#loading').remove();
+					$mainContent.hide();
+					$mainContent.slideDown("slow");
+					$('iframe').reframe();
 				});
-
-				$('#loading').remove();
-				$mainContent.hide();
-				$mainContent.slideDown("slow");
-				$('iframe').reframe();
-			});
-		}
+			}
 		});
 
 		var preparar = function() {
