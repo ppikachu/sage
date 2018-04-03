@@ -1,4 +1,4 @@
-<article class="py-4 container" id="content">
+<article class="py-4 container border-bottom" id="content">
 
 	<header>
 		<h2 class="entry-title">{{ get_the_title() }}</h2>
