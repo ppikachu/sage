@@ -21,7 +21,7 @@
 	@endphp
 </div>
 
-<div class="grid" id="pack" >
+<div class="grid" id="pack" style="min-height:70vh;" >
 	<div class="grid-sizer"></div>
   @while (have_posts()) @php(the_post())
     @include('partials.content-'.get_post_type())

@@ -13,11 +13,13 @@ export default {
 			$grid.isotope('layout');
 		});
 
+		$(document).delegate(".ir-portfolio", "click", function() {
+			$('html,body').animate({ scrollTop: $("#filters1").offset().top-85 },2000);
+		});
+
 		// bind filter button click
 
 		$('.filters').on('click', 'button', function() {
-
-			// var $btn = $(this).button('loading');
 
 			if ($(this).hasClass("active")) {
 				filterValue = "*";
@@ -27,23 +29,31 @@ export default {
 				$('.filters').find('.active').removeClass('active');
 				$(this).addClass('active');
 			}
-			$grid.isotope({
-				filter: filterValue,
-			});
-
-			// $grid.isotope('on', 'layoutComplete', function(laidOutItems) {
-			// 	$btn.button('reset');
-			// });
-
+			$grid.isotope({ filter: filterValue });
 		});
 
+		// abrir card
+		$(document).delegate(".item", "click", function() {
+			$(this).find('.collapse').on('shown.bs.collapse', function () {$grid.isotope('layout');});
+			$(this).find('.collapse').collapse('show');
+			$(this).addClass('active'); //marca la entrada que se esta viendo
+
+			return false;
+		});
+		// cerrar card
+		$(document).delegate(".item button", "click", function() {
+			$(this).parents(find('.collapse')).on('hidden.bs.collapse', function () {$grid.isotope('layout');});
+			$(this).parents(find('.collapse')).collapse('hide');
+			$(this).closest('article').removeClass('active'); //marca la entrada que se esta viendo
+			return false;
+		});
+
+		// cargar proyecto
+		var id;
+
 		$(document).delegate(".ajax a", "click", function() {
-			$("#pack .active").removeClass('active'); //desmarca la entrada que se esta viendo
 			location.hash = this.pathname;
-			var el_hash = location.hash.substring(2, window.location.hash.length - 1);
-			$('article#' + el_hash).addClass('active'); //marca la entrada que se esta viendo
-			//console.log(el_hash);
-			$('[data-toggle="tooltip"]').tooltip('hide');
+			// $('[data-toggle="tooltip"]').tooltip('hide');
 			$(window).trigger('hashchange');
 			return false;
 		});
@@ -51,89 +61,54 @@ export default {
 		// Bind an event handler.
 		jQuery(window).hashchange(function() {
 			var url = window.location.hash.substring(1);
-			//console.log(url);
+			id = "#"+window.location.hash.slice(2, -1);
+			//console.log(id);
 			if (url != "") {
 				preparar();
 				url = url + " #content";
 
-				$("#ajax-modal").load(url, function(response, status, xhr) {
+				$(id+" .ajax-content").load(url, function(response, status, xhr) {
 
 					if (status == "error") {
 						var msg = "Sorry but there was an error: ";
 						$("#error").html(msg + xhr.status + " " + xhr.statusText);
 					}
 
-					$("#ajax-modal").addClass('on');
+					$(id+" .poster").hide();
+					$(id).addClass('w-100').removeClass('loading');
+					//$grid.on('layoutComplete', function() {$('html,body').scrollTop($(id).offset().top-80);} );
 
-					var $mainContent = $("#ajax-modal #content");
-					// $('.wp-playlist').each(function() {
-					// 	return new WPPlaylistView({
-					// 		el: this,
-					// 	});
-					// });
-
-					$("#light-slider").lightSlider({
-						item: 1,
-						autoWidth: false,
-						slideMove: 1, // slidemove will be 1 if loop is true
-						slideMargin: 10,
-
-						addClass: '',
-						mode: "slide",
-						cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
-						easing: 'linear', //'for jquery animation',////
-
-						speed: 400, //ms'
-						loop: true,
-						slideEndAnimation: true,
-
-						keyPress: true,
-						controls: true,
-						prevHtml: '',
-						nextHtml: '',
-
-						rtl: false,
-						adaptiveHeight: true,
-
-						vertical: false,
-						verticalHeight: 500,
-						vThumbWidth: 100,
-
-						thumbItem: 10,
-						pager: true,
-						gallery: false,
-						galleryMargin: 5,
-						thumbMargin: 5,
-						currentPagerPosition: 'middle',
-
-						enableTouch: true,
-						enableDrag: true,
-						freeMove: true,
-						swipeThreshold: 40,
+					$(id).imagesLoaded( function() {
+							$("#light-slider").lightSlider({
+								item: 1,
+								keyPress: true,
+								//adaptiveHeight: true,
+								onSliderLoad: function () {
+									$grid.isotope('layout');
+								},
+							});
+							$grid.isotope('layout');
 					});
+					// $(id).removeClass('loading');
 
-					$('#loading').remove();
-					$mainContent.hide();
-					$mainContent.slideDown("slow");
-					$('iframe').reframe();
+					$('iframe').reframe(function() {$grid.isotope('layout');});
 				});
 			}
 		});
 
 		var preparar = function() {
-			$('body').append('<div id="loading" class="loading"></div>');
-			$('.main').addClass('blur');
-			$('html, body').animate({
-				scrollTop: 0,
-			}, 400);
+			$(id).addClass('loading');
+			// $('.main').addClass('blur');
 		};
 
 		// cerrar entrada
 		$(document).delegate(".cerrar", "click", function() {
-			$("#ajax-modal #content").slideUp("slow", function() {
-				location.hash = "";
-				$("#ajax-modal").empty().removeClass('on');
-				$('.main').removeClass('blur');
+			$(id+" .ajax-content article").slideUp("slow", function() {
+				//location.hash = "";
+				$(id+" .ajax-content").empty();
+				$(id).removeClass('w-100');
+				$(id+" .poster").show();
+				$grid.isotope('layout');
 				$("#pack .active").removeClass('active'); //desmarca la entrada que se esta viendo
 			});
 			return false;
@@ -141,8 +116,6 @@ export default {
 
 		$('.boton-contacto').click(function() {
 			$('#contacto').slideToggle('slow');
-			//$(this).toggleClass('cruz');
-			//$( "#contacto-icono" ).toggleClass('fa-envelope-o fa-caret-up');
 			return false;
 		});
 
@@ -150,6 +123,6 @@ export default {
 	finalize() {
 		// JavaScript to be fired on all pages, after page specific JS is fired
 		$(window).trigger('hashchange'); //dispara el hash al cargar la url
-		$('[data-toggle="tooltip"]').tooltip(); // tooltips de las entradas
+		//$('[data-toggle="tooltip"]').tooltip(); // tooltips de las entradas
 	},
 };

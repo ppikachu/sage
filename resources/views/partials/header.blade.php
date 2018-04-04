@@ -38,5 +38,4 @@
 	</div>
 </nav>
 
-	<div id="ajax-modal" class="position-absolute w-100"></div>
-	<div id="error"></div>
+<div id="error"></div>

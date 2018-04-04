@@ -24,23 +24,45 @@ $width: 50%;
 .item {
   float: left;
 
+  img {
+    cursor: pointer;
+  }
+
   @include transition(border 0.2s ease-in-out);
 
   a:hover {
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) inset;
   }
-
-  img {
-    z-index: -1;
-    position: relative;
-  }
 }
 
-.item.active img {
-  border-radius: $border-radius-lg;
-  border: 3px solid $gray-200;
+// .item.active img {
+//   box-shadow: inset 0 0 7px 0 lighten($primary, 20%);
+//
+//   @include transition(border 0.2s ease-in-out);
+// }
 
-  @include transition(border 0.2s ease-in-out);
+.item.active .collapsing {
+  z-index: 1;
+  position: relative;
+}
+
+.item.active .collapse {
+  z-index: 1;
+}
+
+.item.active .shadow {
+  border-radius: $border-radius;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 50px inset;
+  transition: box-shadow 0.2s ease-in;
+
+  img {
+    max-width: 100%;
+    position: relative;
+    z-index: -1;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
 }
 
 .gutter-sizer {
@@ -106,19 +128,15 @@ $width: 50%;
   background-color: white;
 }
 
-#ajax-modal.on {
-  z-index: 10;
+.poster {
+  display: block;
 }
 
 .loading {
-  position: fixed;
-  top: 35vh;
-  height: 256px;
-  width: 100%;
-  z-index: 10;
   background-image: url(../images/iso.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 50%;
 }
 
 .blur {
