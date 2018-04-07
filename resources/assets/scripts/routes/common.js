@@ -86,9 +86,10 @@ export default {
 		});
 		// cargar proyecto
 		$(document).delegate(".ver_proyecto", "click", function() {
+			//alert("Your book is overdue.");
 			cerrarProyecto();
 			location.hash = this.pathname;
-			$(window).trigger('hashchange');
+			//$(window).trigger('hashchange');
 			return false;
 		});
 		// Bind an event handler.

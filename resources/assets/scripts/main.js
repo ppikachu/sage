@@ -23,7 +23,7 @@ import faFolderOpen from "@fortawesome/fontawesome-free-solid/faFolderOpen";
 import faAddressCard from "@fortawesome/fontawesome-free-solid/faAddressCard";
 import faVideo from "@fortawesome/fontawesome-free-solid/faVideo";
 
-fontawesome.library.add(faVideo,faBars,faFacebook,faEnvelope,faTimes,faFolderOpen,faAddressCard);
+fontawesome.library.add(faBars,faFacebook,faEnvelope,faTimes,faFolderOpen,faAddressCard,faVideo);
 
 // Script: jQuery hashchange event
 //
