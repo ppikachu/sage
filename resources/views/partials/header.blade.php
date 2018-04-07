@@ -1,12 +1,12 @@
 @if (App\display_sidebar())
-	<div id="contacto" style="display:none;">
+	<div id="contacto" class="collapse text-white">
 		<div id="barras">
-			<div id="yel" class="color"></div>
 			<div id="cya" class="color"></div>
 			<div id="gre" class="color"></div>
 			<div id="pin" class="color"></div>
 			<div id="red" class="color"></div>
 			<div id="blu" class="color"></div>
+			<div id="yel" class="color"></div>
 		</div>
 		<div class="container py-4">
 			@include('partials.sidebar')
@@ -29,7 +29,7 @@
 			@if (has_nav_menu('primary_navigation'))
 				{!! wp_nav_menu([
 					'theme_location' => 'primary_navigation',
-					'menu_class' => 'navbar-nav ml-auto text-uppercase',
+					'menu_class' => 'navbar-nav ml-auto text-uppercase h6',
 					'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
 					'walker'            => new WP_Bootstrap_Navwalker()
 					]) !!}

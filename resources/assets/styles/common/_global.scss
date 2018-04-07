@@ -1,12 +1,21 @@
-@import url(http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400italic,700italic,400,700);
+@import url(http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400italic,700italic,400,700|Archivo+Black|Kanit:400,800|Montserrat:400,700,900);
 
 .navbar-dark {
+  // background-color: transparent !important;
   background-color: $secondary !important;
+}
+
+.nav-link:hover {
+  text-shadow: 0 0 3px lighten($secondary, 60%);
 }
 
 /* portfolio */
 $margin: 2%;
 $width: 50%;
+
+#pack {
+  min-height: 70vh;
+}
 
 .grid-sizer,
 .item {
@@ -24,8 +33,10 @@ $width: 50%;
 .item {
   float: left;
 
-  img {
+  .shadow {
     cursor: pointer;
+
+    @include transition(box-shadow 0.1s ease-in);
   }
 
   @include transition(border 0.2s ease-in-out);
@@ -34,12 +45,6 @@ $width: 50%;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) inset;
   }
 }
-
-// .item.active img {
-//   box-shadow: inset 0 0 7px 0 lighten($primary, 20%);
-//
-//   @include transition(border 0.2s ease-in-out);
-// }
 
 .item.active .collapsing {
   z-index: 1;
@@ -50,10 +55,24 @@ $width: 50%;
   z-index: 1;
 }
 
+.trailer-loading {
+  padding: 10rem;
+  background-image: url(../images/tubos_loop.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30%;
+}
+
+.loading .shadow {
+  background-image: url(../images/tubos_loop.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+}
+
 .item.active .shadow {
   border-radius: $border-radius;
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 50px inset;
-  transition: box-shadow 0.2s ease-in;
 
   img {
     max-width: 100%;
@@ -94,30 +113,25 @@ $width: 50%;
     float: left;
   }
 
-  #yel { background-color: yellow; }
+  #yel { background-color: $yellow; }
 
-  #cya { background-color: cyan; }
+  #cya { background-color: $cyan; }
 
-  #gre { background-color: green; }
+  #gre { background-color: $green; }
 
-  #pin { background-color: pink; }
+  #pin { background-color: $pink; }
 
-  #red { background-color: red; }
+  #red { background-color: $red; }
 
-  #blu { background-color: blue; }
+  #blu { background-color: $blue; }
 }
 
 /* filtros y menu */
 
-.filters button {
-  text-transform: uppercase;
-
-  &.active {
-    background-color: lighten($primary, 20%) !important;
-    // @include box-shadow(0 0 7px 0 #5639db);
-    box-shadow: 0 0 7px 0 lighten($primary, 20%) !important;
-    border-color: transparent !important;
-  }
+.filters button.active {
+  background-color: lighten($primary, 20%) !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 7px 0 lighten($primary, 20%) !important;
 }
 
 /* portfolio */
@@ -130,13 +144,6 @@ $width: 50%;
 
 .poster {
   display: block;
-}
-
-.loading {
-  background-image: url(../images/iso.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 50%;
 }
 
 .blur {
