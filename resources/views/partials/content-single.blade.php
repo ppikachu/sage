@@ -9,11 +9,12 @@
 		</div>
 	</div>
 
-	<div class="entry-content">
+	<div class="entry-content pb-5">
 			@if (types_render_field( "multi_embed"))
 				<div id="slick"><div>@php echo types_render_field( "multi_embed", array("separator" => "</div><div>") ) @endphp</div></div>
 			@endif
 			{{ the_content() }}
+			@if (types_render_field( "cliente")) {{ "Cliente: ".types_render_field("cliente") }} @endif
 	</div>
 
 </article>
