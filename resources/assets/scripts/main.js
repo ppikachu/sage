@@ -8,7 +8,9 @@ import 'imagesloaded/imagesloaded.pkgd.min';
 // import reframe
 import 'reframe.js/dist/jquery.reframe.min';
 // import lightslider
-import 'lightslider/dist/js/lightslider';
+// import 'lightslider/dist/js/lightslider';
+// import slick
+import 'slick-carousel/slick/slick';
 // import scrollto
 import 'scroll-to/index';
 

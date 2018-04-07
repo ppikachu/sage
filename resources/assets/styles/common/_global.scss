@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400italic,700italic,400,700|Archivo+Black|Kanit:400,800|Montserrat:400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400italic,700italic,400,700|Montserrat:400,700,900);
 
 .navbar-dark {
   // background-color: transparent !important;
@@ -157,4 +157,10 @@ $width: 50%;
 .entry-content-asset,
 .lSSlideOuter {
   margin-bottom: 1em; //margen videos y slider
+}
+
+$slick-dot-size: 12px;
+
+.slick-dotted.slick-slider {
+  margin-bottom: 60px !important;
 }

@@ -4,6 +4,10 @@
 // fix para build:production
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
+// Slick Carousel font path
+$slick-font-path: "~slick-carousel/slick/fonts/";
+// Slick Carousel ajax-loader.gif path
+$slick-loader-path: "~slick-carousel/slick/";
 
 $primary:				#311b92;
 $secondary:			#0d006f;
@@ -30,4 +34,7 @@ $headings-font-family: "Fredoka One", Helvetica, Arial, sans-serif;
 $headings-font-weight:        400;
 
 $font-family-sans-serif:      "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$font-weight-base:            700;
+$font-weight-base:            400;
+
+// $card-spacer-y:                     0.25rem;
+$card-spacer-x:                     0.5rem;

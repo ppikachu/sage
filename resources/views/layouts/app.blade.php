@@ -7,7 +7,7 @@
 
 		@php $args = array('pagename' => 'inicio'); $the_query = new WP_Query( $args ); $the_query->the_post(); @endphp
 		<div id="gran_bloque" class="d-flex align-items-end justify-content-center" style="margin-top:-63px; height:100vh; overflow:hidden;">
-			<video style="width:100%; height:100%; object-fit:cover;" autoplay muted loop poster="{{the_post_thumbnail_url('large')}}"><source src="{{types_render_field( "video")}}" type="video/mp4"></video>
+			<video style="width:100%; height:100%; object-fit:cover;" autoplay muted loop poster="{{the_post_thumbnail_url('large')}}"><source src="{{ types_render_field( "video", array("output" => "raw")) }}" type="video/mp4"></video>
 			<div class="position-absolute container text-white flex-column d-flex">
 				{{ the_content() }}
 				<a class="my-4 align-self-center trailer btn btn-primary btn-lg h4 text-uppercase" href="#trailer"><i class="fas fa-video"></i> ver trailer</a>
