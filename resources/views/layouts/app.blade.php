@@ -2,12 +2,19 @@
 <html @php(language_attributes())>
 	@include('partials.head')
 	<body @php(body_class())>
+
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8SCVVG"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+
 		@php(do_action('get_header'))
 		@include('partials.header')
 
 		@php $args = array('pagename' => 'inicio'); $the_query = new WP_Query( $args ); $the_query->the_post(); @endphp
 		<div id="gran_bloque" class="d-flex align-items-end justify-content-center" style="margin-top:-63px; height:100vh; overflow:hidden;">
 			<video style="width:100%; height:100%; object-fit:cover;" autoplay muted loop poster="{{the_post_thumbnail_url('large')}}"><source src="{{ types_render_field( "video", array("output" => "raw")) }}" type="video/mp4"></video>
+				<div id="tv" class="position-absolute w-100 h-100"></div>
 			<div class="position-absolute container text-white flex-column d-flex">
 				{{ the_content() }}
 				<a class="my-4 align-self-center trailer btn btn-primary btn-lg h4 text-uppercase" href="#trailer"><i class="fas fa-video"></i> ver trailer</a>
@@ -26,9 +33,7 @@
 
 			@php $args = array('pagename' => 'quienes-somos'); $the_query = new WP_Query( $args ); $the_query->the_post(); @endphp
 			<div id="nosotros" class="container pt-5">
-				<div class="my-5">
-					<h1 class="text-center entry-title">{{ get_the_title() }}</h1>
-				</div>
+				<h1 class="my-5 text-center entry-title">{{ get_the_title() }}</h1>
 			</div>
 			<div class="py-5" style="background-image:url({{the_post_thumbnail_url('large')}}); background-size:cover; background-position:center;">
 				<div class="container text-white">
@@ -39,8 +44,27 @@
 			</div>
 			@php wp_reset_postdata(); @endphp
 
-
-		</div>
+			@php $args = array('pagename' => 'contacto'); $the_query = new WP_Query( $args ); $the_query->the_post(); @endphp
+			<div id="contacto" class="pt-5">
+				<div class="container text-center">
+					<h1 class="entry-title my-5">{{ get_the_title() }}</h1>
+					{{ the_content() }}
+				</div>
+				<div class="text-white position-relative">
+					<div id="barras">
+						<div id="cya" class="color"></div>
+						<div id="gre" class="color"></div>
+						<div id="pin" class="color"></div>
+						<div id="red" class="color"></div>
+						<div id="blu" class="color"></div>
+						<div id="yel" class="color"></div>
+					</div>
+					<div class="container">
+						<div class="container jumbotron bg-transparent">@php echo do_shortcode( '[contact-form-7 id="2460"]' ) @endphp</div>
+					</div>
+				</div>
+			</div>
+			@php wp_reset_postdata(); @endphp
 
 		@php(do_action('get_footer'))
 		@include('partials.footer')

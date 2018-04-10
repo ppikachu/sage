@@ -1,21 +1,20 @@
-@import url(http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400italic,700italic,400,700|Montserrat:400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Fredoka+One|Montserrat:400,700,900);
 
 .navbar-dark {
-  // background-color: transparent !important;
   background-color: $secondary !important;
 }
 
 .nav-link:hover {
-  text-shadow: 0 0 3px lighten($secondary, 60%);
+  text-shadow: 0 0 4px $third;
+}
+
+#tv {
+  background-image: url(../images/tv.png);
 }
 
 /* portfolio */
 $margin: 2%;
 $width: 50%;
-
-#pack {
-  min-height: 70vh;
-}
 
 .grid-sizer,
 .item {
@@ -36,13 +35,7 @@ $width: 50%;
   .shadow {
     cursor: pointer;
 
-    @include transition(box-shadow 0.1s ease-in);
-  }
-
-  @include transition(border 0.2s ease-in-out);
-
-  a:hover {
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) inset;
+    @include transition(box-shadow 0.2s ease-out);
   }
 }
 
@@ -93,37 +86,8 @@ $width: 50%;
 }
 
 // /////////
-
-#contacto {
-  position: relative;
-
-  #barras {
-    background-color: blue;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .color {
-    width: 16.66%;
-    height: 100%;
-    float: left;
-  }
-
-  #yel { background-color: $yellow; }
-
-  #cya { background-color: $cyan; }
-
-  #gre { background-color: $green; }
-
-  #pin { background-color: $pink; }
-
-  #red { background-color: $red; }
-
-  #blu { background-color: $blue; }
+.wpcf7-form label {
+  display: block;
 }
 
 /* filtros y menu */
@@ -146,14 +110,6 @@ $width: 50%;
   display: block;
 }
 
-.blur {
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
-}
-
 .entry-content-asset,
 .lSSlideOuter {
   margin-bottom: 1em; //margen videos y slider
@@ -163,4 +119,31 @@ $slick-dot-size: 12px;
 
 .slick-dotted.slick-slider {
   margin-bottom: 60px !important;
+}
+
+#barras {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .color {
+    width: 16.66%;
+    height: 100%;
+    float: left;
+  }
+
+  #yel { background-color: $yellow; }
+
+  #cya { background-color: $cyan; }
+
+  #gre { background-color: $green; }
+
+  #pin { background-color: $pink; }
+
+  #red { background-color: $red; }
+
+  #blu { background-color: $blue; }
 }

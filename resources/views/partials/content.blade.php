@@ -17,10 +17,10 @@
 
 				<h5>{{ the_title() }}</h5>
 				<p class="small">{{ get_the_excerpt() }}</p>
-
+				{{-- @if (types_render_field( "cliente")) <p class="small">Cliente: {{ types_render_field("cliente") }}.</p> @endif --}}
 				<div class="row no-gutters">
 					<div class="col">
-						<a href="{{ get_permalink() }}" class="ver_proyecto h6 text-uppercase btn btn-sm btn-primary">ver proyecto</a>
+						<a href="{{ get_permalink() }}" class="ver_proyecto h6 text-uppercase btn btn-sm btn-primary">ver</a>
 					</div>
 					<div class="col text-right">
 						<button class="btn btn-sm btn-primary click toggler"><i class='fas fa-times'></i></button>

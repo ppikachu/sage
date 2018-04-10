@@ -21,7 +21,7 @@ export default {
 
 		// BOTONES ***
 		var scrollToElement = require('scroll-to-element');
-		var buscon;
+		var scrollHacia;
 		// trailer
 		$(document).delegate("a.trailer", "click", function() {
 			scrollToElement('#trailer-content', { offset: -60, ease: 'in-out-expo', duration: 1000 });
@@ -42,7 +42,6 @@ export default {
 			location.hash="portfolio";
 			$("#trailer-content article").slideUp("slow", function() {
 				$("#trailer-content").empty();
-				// buscon=true;
 				$grid.isotope('layout');
 				scrollToElement('#portfolio', { offset: 1, ease: 'in-out-expo', duration: 1000 });
 			});
@@ -61,18 +60,13 @@ export default {
 		});
 		// contacto
 		$('.boton-contacto').click(function() {
-			// $('html,body').animate({scrollTop:0},500, function() { $('#contacto').collapse('toggle'); });
-			scrollToElement('body', { ease: 'in-out-expo', duration: 800 });
+			scrollToElement('#contacto', { offset: $('nav.sticky-top').height()/1.5*-1, ease: 'in-out-expo', duration: 1000 });
 			$('.navbar-collapse').collapse('hide');
-			window.setTimeout(openContacto, 800);
-			return false;
 		});
-		function openContacto() {
-			// alert('That was really slow!');
-			$('#contacto').collapse('toggle');
-		}
+
 		// toggle card
 		$(document).delegate(".item", "click", function() {
+			scrollHacia='nada';
 			$(this).toggleClass('active'); //marca la entrada que se esta viendo
 			$(this).find('.collapse').on('shown.bs.collapse', function () {$grid.isotope('layout');});
 			$(this).find('.collapse').on('hidden.bs.collapse', function () {$grid.isotope('layout');});
@@ -83,7 +77,7 @@ export default {
 		// PORTFOLIO ***
 		// bind filter button click
 		$('.filters').on('click', 'button', function() {
-
+			scrollHacia='nada';
 			if ($(this).hasClass("active")) {
 				filterValue = "*";
 				$(this).removeClass('active');
@@ -99,7 +93,6 @@ export default {
 			//alert(location.hash);
 			if (location.hash) cerrarProyecto();
 			location.hash = this.pathname;
-			buscon = true;
 			$(window).trigger('hashchange');
 			return false;
 		});
@@ -110,8 +103,8 @@ export default {
 			id = "#"+window.location.hash.slice(2, -1); // mejorar nombre
 
 			if (url != "") {
+				scrollHacia='single';
 				$(id).addClass('loading');
-				// $('.main').addClass('blur');
 				url = url + " #content";
 
 				$(id+" .ajax-content").load(url, function(response, status, xhr) {
@@ -122,7 +115,6 @@ export default {
 
 					$(id+" .poster").hide();
 					$(id).addClass('w-100').removeClass('loading');
-					// window.setTimeout(moverEntrada(id), 5000);
 					$grid.on('layoutComplete', function() { moverEntrada(id) } );
 
 					$(id).imagesLoaded( function() {
@@ -148,22 +140,23 @@ export default {
 						$grid.isotope('layout');
 					});
 
-					$('iframe').reframe();
+					$('.entry-content-asset iframe').reframe();
 				});
 			}
 
 		});
 
 		var moverEntrada = function(aid) {
-			if (buscon) {
+			if (scrollHacia=='entrada') {
+				scrollToElement(aid, { offset: -80, ease: 'in-out-expo', duration: 1000 });
+			} else if (scrollHacia=='single') {
 				scrollToElement(aid, { offset: -60, ease: 'in-out-expo', duration: 1000 });
-				buscon = false;
 			}
 		}
 		// cerrar entrada
 		$(document).delegate(".cerrar", "click", function() {
 			//$(this).closest('article')
-			buscon = true;
+			scrollHacia = 'entrada';
 			$(id+" .ajax-content article").slideUp("slow", function() {
 				//location.hash = "";
 				cerrarProyecto();
