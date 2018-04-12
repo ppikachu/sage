@@ -1,26 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-  {{-- @include('partials.page-header') --}}
 
-<div id="filters1" class="filters btn-group btn-group-toggle d-flex0 my-4 d-none d-md-flex">
-	@php $args= array('hide_empty' => true ); $tags = get_terms('category', $args);
-	foreach ($tags as $tag){
-		$tag_slug = $tag->slug;
-		echo "<button role='button' class='btn btn-primary w-100' data-loading-text='{$tag->name}' data-filter='.{$tag->slug}'>{$tag->name}</button>";
-	}
-	@endphp
+
+<div class="d-flex0 justify-content-between0 my-5 row">
+	<div class="col text-center">
+		<h1 id="portfolio" class="text-center text-lg-left container">Portfolio</h1>
+	</div>
+	<div class="col-lg-auto">
+		<div id="filters" class="h6 filters d-flex flex-wrap justify-content-center aligncenter">
+			@php $args= array('hide_empty' => true ); $tags = get_terms('category', $args);
+			foreach ($tags as $tag){
+				$tag_slug = $tag->slug;
+				echo "<button role='button' class='mx-1 mb-2 btn btn-sm btn-primary text-uppercase' data-loading-text='{$tag->name}' data-filter='.{$tag->slug}'>{$tag->name}</button>";
+			}
+			@endphp
+		</div>
+	</div>
 </div>
 
-<div id="filters2" class="filters btn-group-sm btn-group-vertical btn-group-toggle d-flex my-3 d-md-none">
-	@php $args= array('hide_empty' => true ); $tags = get_terms('category', $args);
-	foreach ($tags as $tag){
-		$tag_slug = $tag->slug;
-		echo "<button role='button' class='btn btn-primary w-100' data-loading-text='{$tag->name}' data-filter='.{$tag->slug}'>{$tag->name}</button>";
-	}
-	@endphp
-</div>
-
+<img src="@asset('images/tubos_loop.png')" class="d-none">
 <div class="grid" id="pack" >
 	<div class="grid-sizer"></div>
   @while (have_posts()) @php(the_post())

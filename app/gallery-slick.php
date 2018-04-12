@@ -74,20 +74,14 @@ function roots_gallery_st($attr) {
   }
 
   $unique = (get_query_var('page')) ? $instance . '-p' . get_query_var('page'): $instance;
-  //$output = '<div id="slick">';
-  $output = '<ul id="light-slider">';
+	$output = '<div id="slick">';
   $i = 0;
   foreach ($attachments as $id => $attachment) {
-    if ($i == 0) $grid.=" itemx2"; else $grid="item"; //agranda la primer foto
     $attachment_medium = wp_get_attachment_image_src( $id, $size='large' );
-    $output .= '<li class="d-flex0 justify-content-center0"><img src="'.$attachment_medium[0].'" class="img-fluid"></li>';
-    // if (trim($attachment->post_excerpt)) {
-    //   $output .= '<div class="caption hidden-xs">' . wptexturize($attachment->post_excerpt) . '</div>';
-    // }
+    $output .= '<div class="d-md-flex justify-content-center"><img src="'.$attachment_medium[0].'" class="img-fluid"></div>';
     $i++;
   }
-
-  $output .= '</ul>';
+	$output .= '</div>';
   return $output;
 }
 

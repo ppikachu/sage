@@ -3,24 +3,16 @@ import 'jquery';
 
 // import isotope
 import 'isotope-layout/dist/isotope.pkgd.min';
-
 // import imagesloaded
 import 'imagesloaded/imagesloaded.pkgd.min';
-
-// import popper
-//import 'popper.js/dist/popper.min';
-
-// import slick
-//import 'slick-carousel/slick/slick.min';
-
-// import fitvids
-//import 'fitvids/dist/fitvids.min';
-
 // import reframe
 import 'reframe.js/dist/jquery.reframe.min';
-
 // import lightslider
-import 'lightslider/dist/js/lightslider';
+// import 'lightslider/dist/js/lightslider';
+// import slick
+import 'slick-carousel/slick/slick';
+// import scrollto
+import 'scroll-to/index';
 
 // base package
 import fontawesome from "@fortawesome/fontawesome";
@@ -29,8 +21,11 @@ import faBars from "@fortawesome/fontawesome-free-solid/faBars";
 import faFacebook from "@fortawesome/fontawesome-free-brands/faFacebook";
 import faEnvelope from "@fortawesome/fontawesome-free-solid/faEnvelope";
 import faTimes from "@fortawesome/fontawesome-free-solid/faTimes";
+import faFolderOpen from "@fortawesome/fontawesome-free-solid/faFolderOpen";
+import faAddressCard from "@fortawesome/fontawesome-free-solid/faAddressCard";
+import faVideo from "@fortawesome/fontawesome-free-solid/faVideo";
 
-fontawesome.library.add(faBars,faFacebook,faEnvelope,faTimes);
+fontawesome.library.add(faBars,faFacebook,faEnvelope,faTimes,faFolderOpen,faAddressCard,faVideo);
 
 // Script: jQuery hashchange event
 //
@@ -39,7 +34,6 @@ fontawesome.library.add(faBars,faFacebook,faEnvelope,faTimes);
 // Project Home - http://benalman.com/projects/jquery-hashchange-plugin/
 // GitHub       - http://github.com/cowboy/jquery-hashchange/
 // Source       - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.js
-
 (function($,window,undefined){
   '$:nomunge'; // Used by YUI compressor.
 

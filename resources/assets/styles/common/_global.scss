@@ -1,7 +1,15 @@
-@import url(http://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400italic,700italic,400,700);
+@import url(http://fonts.googleapis.com/css?family=Fredoka+One|Montserrat:400,700,900);
 
 .navbar-dark {
   background-color: $secondary !important;
+}
+
+.nav-link:hover {
+  text-shadow: 0 0 4px $third;
+}
+
+#tv {
+  background-image: url(../images/tv.png);
 }
 
 /* portfolio */
@@ -24,23 +32,49 @@ $width: 50%;
 .item {
   float: left;
 
-  @include transition(border 0.2s ease-in-out);
+  .shadow {
+    cursor: pointer;
 
-  a:hover {
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2) inset;
-  }
-
-  img {
-    z-index: -1;
-    position: relative;
+    @include transition(box-shadow 0.2s ease-out);
   }
 }
 
-.item.active img {
-  border-radius: $border-radius-lg;
-  border: 3px solid $gray-200;
+.item.active .collapsing {
+  z-index: 1;
+  position: relative;
+}
 
-  @include transition(border 0.2s ease-in-out);
+.item.active .collapse {
+  z-index: 1;
+}
+
+.trailer-loading {
+  padding: 10rem;
+  background-image: url(../images/iso.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30%;
+}
+
+.loading .shadow {
+  background-image: url(../images/iso.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+}
+
+.item.active .shadow {
+  border-radius: $border-radius;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 50px inset;
+
+  img {
+    max-width: 100%;
+    position: relative;
+    z-index: -1;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
 }
 
 .gutter-sizer {
@@ -52,50 +86,16 @@ $width: 50%;
 }
 
 // /////////
-
-#contacto {
-  position: relative;
-
-  #barras {
-    background-color: blue;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .color {
-    width: 16.66%;
-    height: 100%;
-    float: left;
-  }
-
-  #yel { background-color: yellow; }
-
-  #cya { background-color: cyan; }
-
-  #gre { background-color: green; }
-
-  #pin { background-color: pink; }
-
-  #red { background-color: red; }
-
-  #blu { background-color: blue; }
+.wpcf7-form label {
+  display: block;
 }
 
 /* filtros y menu */
 
-.filters button {
-  text-transform: uppercase;
-
-  &.active {
-    background-color: lighten($primary, 20%) !important;
-    // @include box-shadow(0 0 7px 0 #5639db);
-    box-shadow: 0 0 7px 0 lighten($primary, 20%) !important;
-    border-color: transparent !important;
-  }
+.filters button.active {
+  background-color: lighten($primary, 20%) !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 7px 0 lighten($primary, 20%) !important;
 }
 
 /* portfolio */
@@ -106,30 +106,44 @@ $width: 50%;
   background-color: white;
 }
 
-#ajax-modal.on {
-  z-index: 10;
-}
-
-.loading {
-  position: fixed;
-  top: 35vh;
-  height: 256px;
-  width: 100%;
-  z-index: 10;
-  background-image: url(../images/iso.png);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.blur {
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
+.poster {
+  display: block;
 }
 
 .entry-content-asset,
 .lSSlideOuter {
   margin-bottom: 1em; //margen videos y slider
+}
+
+$slick-dot-size: 12px;
+
+.slick-dotted.slick-slider {
+  margin-bottom: 60px !important;
+}
+
+#barras {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .color {
+    width: 16.66%;
+    height: 100%;
+    float: left;
+  }
+
+  #yel { background-color: $yellow; }
+
+  #cya { background-color: $cyan; }
+
+  #gre { background-color: $green; }
+
+  #pin { background-color: $pink; }
+
+  #red { background-color: $red; }
+
+  #blu { background-color: $blue; }
 }
