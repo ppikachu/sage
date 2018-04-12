@@ -35,8 +35,8 @@
 			<div id="nosotros" class="container pt-5">
 				<h1 class="my-5 text-center entry-title">{{ get_the_title() }}</h1>
 			</div>
-			<div class="py-5" style="background-image:url({{the_post_thumbnail_url('large')}}); background-size:cover; background-position:center;">
-				<div class="container text-white">
+			<div class="pb-5" @if (has_post_thumbnail()) style="background-image:url({{the_post_thumbnail_url('large')}}); background-size:cover; background-position:center;" @endif>
+				<div class="container">
 					<div class="jumbotron bg-transparent border-0">
 						{{ the_content() }}
 					</div>
