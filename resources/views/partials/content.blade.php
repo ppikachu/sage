@@ -6,10 +6,10 @@
 		}
 	} @endphp
 
-<article class="toggler p-1 {{ $output }}" id="<?php echo $post->post_name; ?>">
+<article class="p-1 {{ $output }}" id="<?php echo $post->post_name; ?>">
 	<div class="ajax-content"></div>
 	<div class="poster toggler" data-toggle="tooltip" data-placement="bottom">
-		<div class="shadow toggler">
+		<div class="shadow">
 			@php(the_post_thumbnail('thumbnail', array('class' => 'toggler card-img-top rounded img-fluid')))
 		</div>
 		<div class="dropdown collapse w-100 bg-light" id="cont-{{ $post->post_name }}">
@@ -20,7 +20,7 @@
 				{{-- @if (types_render_field( "cliente")) <p class="small">Cliente: {{ types_render_field("cliente") }}.</p> @endif --}}
 				<div class="row no-gutters">
 					<div class="col">
-						<a href="{{ get_permalink() }}" class="ver_proyecto h6 text-uppercase btn btn-sm btn-primary">ver</a>
+						<a href="{{ get_permalink() }}" class="ver_proyecto h6 text-uppercase btn btn-sm btn-primary" onclick="dataLayer.push({'event': '{{ get_permalink() }}'});" >ver</a>
 					</div>
 					<div class="col text-right">
 						<button class="btn btn-sm btn-primary click toggler"><i class='fas fa-times'></i></button>

@@ -2,14 +2,11 @@ export default {
 	init() {
 		// JavaScript to be fired on all pages
 
-		// menu cerrar
-		// $(document).delegate(".nav-link", "click", function() {
-		// 	$('.navbar-collapse').collapse('hide');
-		// });
 		// ISOTOPE ***
 		var $grid = $('.grid').isotope({
 			itemSelector: '.item',
 			percentPosition: true,
+			stagger: 30,
 			masonry: {
 				columnWidth: '.grid-sizer',
 			},
@@ -47,35 +44,35 @@ export default {
 			});
 			return false;
 		});
-
 		// portfolio
 		$(document).delegate(".ir-portfolio", "click", function() {
 			scrollToElement('#portfolio', { offset: $('nav.sticky-top').height()/1.5*-1, ease: 'in-out-expo', duration: 1000 });
-			$('.navbar-collapse').collapse('hide');
 		});
 		// nosotros
 		$(document).delegate(".ir-nosotros", "click", function() {
 			scrollToElement('#nosotros', { offset: $('nav.sticky-top').height()/1.5*-1, ease: 'in-out-expo', duration: 1000 });
-			$('.navbar-collapse').collapse('hide');
 		});
 		// contacto
 		$('.boton-contacto').click(function() {
 			scrollToElement('#contacto', { offset: $('nav.sticky-top').height()/1.5*-1, ease: 'in-out-expo', duration: 1000 });
+		});
+		// menu mobile cerrar
+		$(document).delegate(".nav-link", "click", function() {
 			$('.navbar-collapse').collapse('hide');
 		});
 
 		// toggle card
-		$(document).delegate(".item", "click", function() {
+		$(document).delegate(".toggler", "click", function() {
 			scrollHacia='nada';
-			$(this).toggleClass('active'); //marca la entrada que se esta viendo
-			$(this).find('.collapse').on('shown.bs.collapse', function () {$grid.isotope('layout');});
-			$(this).find('.collapse').on('hidden.bs.collapse', function () {$grid.isotope('layout');});
-			$(this).find('.collapse').collapse('toggle');
+			$(this).closest('article').toggleClass('active'); //marca la entrada que se esta viendo
+			$(this).closest('article').find('.collapse').on('shown.bs.collapse', function () {$grid.isotope('layout');});
+			$(this).closest('article').find('.collapse').on('hidden.bs.collapse', function () {$grid.isotope('layout');});
+			$(this).closest('article').find('.collapse').collapse('toggle');
 			return false;
 		});
 
 		// PORTFOLIO ***
-		// bind filter button click
+		// filtrar por categoría
 		$('.filters').on('click', 'button', function() {
 			scrollHacia='nada';
 			if ($(this).hasClass("active")) {
@@ -96,13 +93,13 @@ export default {
 			$(window).trigger('hashchange');
 			return false;
 		});
-		// Bind an event handler.
+		// cargar hash
 		var id;
 		jQuery(window).hashchange(function() {
 			var url = window.location.hash.substring(1);
-			id = "#"+window.location.hash.slice(2, -1); // mejorar nombre
-
+			// alert(url);
 			if (url != "") {
+				id = "#"+window.location.hash.slice(2, -1); // mejorar nombre
 				scrollHacia='single';
 				$(id).addClass('loading');
 				url = url + " #content";
@@ -118,14 +115,6 @@ export default {
 					$grid.on('layoutComplete', function() { moverEntrada(id) } );
 
 					$(id).imagesLoaded( function() {
-							// $("#light-slider").lightSlider({
-							// 	item: 1,
-							// 	keyPress: true,
-							// 	//adaptiveHeight: true,
-							// 	onSliderLoad: function () {
-							// 		$grid.isotope('layout');
-							// 	},
-							// });
 							$('#slick').slick({
 								dots: true,
 								arrows: false,
@@ -155,10 +144,8 @@ export default {
 		}
 		// cerrar entrada
 		$(document).delegate(".cerrar", "click", function() {
-			//$(this).closest('article')
 			scrollHacia = 'entrada';
 			$(id+" .ajax-content article").slideUp("slow", function() {
-				//location.hash = "";
 				cerrarProyecto();
 			});
 			return false;
@@ -172,6 +159,7 @@ export default {
 				$(id).removeClass('w-100');
 				$(id+" .poster").show();
 				$grid.isotope('layout');
+				// location.hash = "";
 			}
 		}
 
@@ -179,6 +167,5 @@ export default {
 	finalize() {
 		// JavaScript to be fired on all pages, after page specific JS is fired
 		$(window).trigger('hashchange'); //dispara el hash al cargar la url
-		//$('[data-toggle="tooltip"]').tooltip(); // tooltips de las entradas
 	},
 };

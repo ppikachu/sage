@@ -19,7 +19,7 @@
 	</div>
 </div>
 
-<img src="@asset('images/tubos_loop.png')" class="d-none">
+<img src="@asset('images/iso.png')" class="d-none">
 <div class="grid" id="pack" >
 	<div class="grid-sizer"></div>
   @while (have_posts()) @php(the_post())
