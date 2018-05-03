@@ -48,7 +48,6 @@
 			<div id="contacto" class="pt-5">
 				<div class="container text-center">
 					<h1 class="entry-title my-5">{{ get_the_title() }}</h1>
-					{{ the_content() }}
 				</div>
 				<div class="text-white position-relative">
 					<div id="barras">
@@ -60,7 +59,7 @@
 						<div id="yel" class="color"></div>
 					</div>
 					<div class="container">
-						<div class="container jumbotron bg-transparent">@php echo do_shortcode( '[contact-form-7 id="2460"]' ) @endphp</div>
+						<div class="container jumbotron bg-transparent">{{ the_content() }}</div>
 					</div>
 				</div>
 			</div>
