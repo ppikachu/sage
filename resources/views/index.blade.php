@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="d-flex0 justify-content-between0 my-5 row">
 	<div class="col text-center">
 		<h1 id="portfolio" class="text-center text-lg-left container">Portfolio</h1>

@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div id="trailer-content" class="container"></div>
-		@php wp_reset_postdata(); @endphp
+		@php(wp_reset_postdata())
 
 		<div id="contenido" role="document">
 
@@ -42,7 +42,7 @@
 					</div>
 				</div>
 			</div>
-			@php wp_reset_postdata(); @endphp
+			@php(wp_reset_postdata())
 
 			@php $args = array('pagename' => 'contacto'); $the_query = new WP_Query( $args ); $the_query->the_post(); @endphp
 			<div id="contacto" class="pt-5">
@@ -63,7 +63,7 @@
 					</div>
 				</div>
 			</div>
-			@php wp_reset_postdata(); @endphp
+			@php(wp_reset_postdata())
 
 		@php(do_action('get_footer'))
 		@include('partials.footer')
